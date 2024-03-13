@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('rating');
             $table->string('image_url')->nullable();
             
+            $table->softDeletes();
             $table->timestamps();
         });
     }

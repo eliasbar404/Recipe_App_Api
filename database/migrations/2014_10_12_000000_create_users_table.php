@@ -22,6 +22,8 @@ return new class extends Migration
             $table->boolean('is_banned')->default(false);
             $table->string('profile_image_url')->nullable()->default('https://ik.imgkit.net/3vlqs5axxjf/BTNE/uploadedImages/import/bbt/2019/02/mysteriousguy-300px.jpg');
             $table->rememberToken();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

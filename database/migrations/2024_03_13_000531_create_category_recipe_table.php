@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         
             $table->primary(['recipe_id', 'category_id']);
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

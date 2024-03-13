@@ -22,6 +22,7 @@ return new class extends Migration
 
             $table->integer('duration_min');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

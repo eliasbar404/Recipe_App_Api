@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('difficulty',['Easy','Medium','Hard']);
             $table->integer('time');
             $table->integer('views')->default(0);
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
