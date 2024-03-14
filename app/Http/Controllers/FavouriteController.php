@@ -15,6 +15,13 @@ class FavouriteController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function getFavouriteRecipes(){
+        $Recipes = Recipe::where('user_id',Auth::user()->id)->get();
+
+        return response()->json(['recipes' => $Recipes], 201);
+    }
+
+
     public function SaveRecipe(Request $request){
         $validator = $request->validate([
             'recipe_id' => 'required|string'
