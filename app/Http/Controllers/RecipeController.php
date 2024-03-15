@@ -32,7 +32,7 @@ class RecipeController extends Controller
             'time'        => 'required',
             'steps'       => 'required|array:description,duration_min',
             'ingredients' => 'required|array',
-            'images'      => 'required|array',
+            'images'      => 'nullable|array',
             'categories'  => 'required|array'
         ]);
 
