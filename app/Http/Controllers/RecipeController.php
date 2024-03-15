@@ -127,10 +127,10 @@ class RecipeController extends Controller
             $rating =count($rating_list) == 0? 0:array_sum($rating_list)/count($rating_list);
             array_push($recipe_final,[
                 "recipe" =>$recipe,
-                "images" =>$recipe->images,
+                "images" =>$recipe->Images,
                 "rating" =>$rating,
-                "likes"  =>count($recipe->likes),
-                "reviews" => $recipe->reviews
+                "likes"  =>count($recipe->Likes),
+                "reviews" => $recipe->Reviews
             ]);
         }
 

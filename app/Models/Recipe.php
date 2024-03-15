@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Step;
 use App\Models\Ingredient;
 use App\Models\Review;
+use App\Models\Image;
 
 class Recipe extends Model
 {
@@ -53,6 +54,11 @@ class Recipe extends Model
     public function Reviews():HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function Images():HasMany
+    {
+        return $this->hasMany(Image::class);
     }
 
 
