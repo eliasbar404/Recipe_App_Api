@@ -13,7 +13,7 @@ use App\Http\Controllers\RecipeController;
 | To Get Recipes By Ingredients : POST  http://localhost:8000/api/recipes/ingredients
 -----------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
-| To Create a New Recipe   : POST    http://localhost:8000/api/recipes/create
+| To Create a New Recipe   : POST    http://localhost:8000/api/recipe
 | To Remove Recipe By ID   : DELETE  http://localhost:8000/api/recipe/{id}
 | To Update Recipe By ID   : PUT     http://localhost:8000/api/recipe/{id}
 */
@@ -29,7 +29,7 @@ Route::group([
 
     //-------- For Admins -------------
     // --------------------------------
-    Route::post('/recipes/create'       ,[RecipeController::class, 'createRecipe']);
+    Route::post('/recipe'               ,[RecipeController::class, 'createRecipe']);
     Route::delete('/recipe/{id}'        ,[RecipeController::class, 'deleteRecipe']);
     Route::put('/recipe/{id}'           ,[RecipeController::class, 'updateRecipe']);
     
