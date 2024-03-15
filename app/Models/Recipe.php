@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Category;
 use App\Models\Step;
-use App\Models\Ingreient;
+use App\Models\Ingredient;
 use App\Models\Review;
 
 class Recipe extends Model
@@ -42,7 +42,7 @@ class Recipe extends Model
 
     public function Ingreients(): HasMany
     {
-        return $this->hasMany(Ingreient::class);
+        return $this->hasMany(Ingredient::class);
     }
 
     public function Likes():HasMany
