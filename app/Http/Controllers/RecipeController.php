@@ -30,10 +30,10 @@ class RecipeController extends Controller
             'origin'      => 'required|string',
             'difficulty'  => 'required',
             'time'        => 'required',
-            'steps'       => 'required|array:description,duration_min',
-            'ingredients' => 'required|array',
-            'images'      => 'nullable|array',
-            'categories'  => 'required|array'
+            'steps'       => 'required',
+            'ingredients' => 'required',
+            'images'      => 'nullable',
+            'categories'  => 'required'
         ]);
 
         if ($validator) {
@@ -48,53 +48,53 @@ class RecipeController extends Controller
             ])->id;
 
             // Save Recipe Steps
-            for($i=0;$i<count($request->steps);$i++) {
-                $step = Step::create([
-                    "id"            => Uuid::uuid4()->toString(),
-                    "recipe_id"     => $Recipe_id,
-                    "step_number"   => $i+1,
-                    "description"   => $request->steps[$i]["description"],
-                    "duration_min"  => $request->steps[$i]["duration_min"]
-                ]);
-            }
+            // for($i=0;$i<count($request->steps);$i++) {
+            //     $step = Step::create([
+            //         "id"            => Uuid::uuid4()->toString(),
+            //         "recipe_id"     => $Recipe_id,
+            //         "step_number"   => $i+1,
+            //         "description"   => $request->steps[$i]["description"],
+            //         "duration_min"  => $request->steps[$i]["duration_min"]
+            //     ]);
+            // }
 
             // Save Recipe Ingredients
-            for($i=0;$i<count($request->ingredients);$i++){
-                    Ingredient::create([
-                        "id"        => Uuid::uuid4()->toString(),
-                        "recipe_id" =>$Recipe_id,
-                        "name"      =>$request->ingredients[$i]["name"],
-                        "quantity"  =>$request->ingredients[$i]["quantity"],
-                    ]);
-            }
+            // for($i=0;$i<count($request->ingredients);$i++){
+            //         Ingredient::create([
+            //             "id"        => Uuid::uuid4()->toString(),
+            //             "recipe_id" =>$Recipe_id,
+            //             "name"      =>$request->ingredients[$i]["name"],
+            //             "quantity"  =>$request->ingredients[$i]["quantity"],
+            //         ]);
+            // }
 
             // Save Recipe Images
-            for($i=0;$i<count($request->images);$i++){
+            // for($i=0;$i<count($request->images);$i++){
 
-                if(isset($request["images"][$i])){
+            //     if(isset($request["images"][$i])){
     
-                    $filename = Str::random(32).".".$request["images"][$i]->getClientOriginalExtension();
-                    $request["images"][$i]->move('uploads/recipe', $filename);
+            //         $filename = Str::random(32).".".$request["images"][$i]->getClientOriginalExtension();
+            //         $request["images"][$i]->move('uploads/recipe', $filename);
         
         
-                    Image::create([
-                        "id"         => Uuid::uuid4()->toString(),
-                        "recipe_id"  =>$Recipe_id,
-                        "image_url"  =>$filename
-                    ]);
-                }
-            }
+            //         Image::create([
+            //             "id"         => Uuid::uuid4()->toString(),
+            //             "recipe_id"  =>$Recipe_id,
+            //             "image_url"  =>$filename
+            //         ]);
+            //     }
+            // }
 
             // Save Recipe Categories
-            for($i=0;$i<count($request->categories);$i++){
+            // for($i=0;$i<count($request->categories);$i++){
 
-                if(isset($request["categories"][$i])){
-                    DB::table('category_recipe')->insert([
-                        "recipe_id"    =>$Recipe_id,
-                        "category_id"  =>$request->categories[$i]
-                    ]);
-                }
-            }
+            //     if(isset($request["categories"][$i])){
+            //         DB::table('category_recipe')->insert([
+            //             "recipe_id"    =>$Recipe_id,
+            //             "category_id"  =>$request->categories[$i]
+            //         ]);
+            //     }
+            // }
             return response()->json(['message' => 'You Saved the Recipe successfully!'], 201);
         }
 
