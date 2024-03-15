@@ -21,5 +21,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 require __DIR__.'/recipe.php';
+require __DIR__.'/category.php';
+require __DIR__.'/review.php';
 require __DIR__.'/favourite.php';
 require __DIR__.'/like.php';
