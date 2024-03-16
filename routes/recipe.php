@@ -40,6 +40,9 @@ Route::group([
     Route::delete('/steps/{id}'        ,[RecipeController::class, 'deleteStep']);
     Route::delete('/ingredients/{id}'  ,[RecipeController::class, 'deleteIngredient']);
 
+    Route::post('/recipe/image'        ,[RecipeController::class, 'createImage']);
+    
+
 
     
     

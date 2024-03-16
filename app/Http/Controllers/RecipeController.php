@@ -30,10 +30,10 @@ class RecipeController extends Controller
             'origin'      => 'required|string',
             'difficulty'  => 'required',
             'time'        => 'required',
-            'steps'       => 'required',
-            'ingredients' => 'required',
-            'images'      => 'nullable',
-            'categories'  => 'required'
+            // 'steps'       => 'required',
+            // 'ingredients' => 'required',
+            // 'images'      => 'nullable',
+            'categories'  => 'required|array'
         ]);
 
         if ($validator) {
@@ -86,15 +86,15 @@ class RecipeController extends Controller
             // }
 
             // Save Recipe Categories
-            // for($i=0;$i<count($request->categories);$i++){
+            for($i=0;$i<count($request->categories);$i++){
 
-            //     if(isset($request["categories"][$i])){
-            //         DB::table('category_recipe')->insert([
-            //             "recipe_id"    =>$Recipe_id,
-            //             "category_id"  =>$request->categories[$i]
-            //         ]);
-            //     }
-            // }
+                if(isset($request["categories"][$i])){
+                    DB::table('category_recipe')->insert([
+                        "recipe_id"    =>$Recipe_id,
+                        "category_id"  =>$request->categories[$i]
+                    ]);
+                }
+            }
             return response()->json(['message' => 'You Saved the Recipe successfully!'], 201);
         }
 
@@ -250,6 +250,37 @@ class RecipeController extends Controller
         $ingredient = Ingredient::where('id',$id)->get();
         $ingredient->delete();
         return response()->json(['message' => 'You Delete The Recipe Steps Successfully!'], 201);
+
+    }
+
+
+    public function createImage(Request $request) {
+
+        $validator = $request->validate([
+            "recipe_id"    => "required",
+            "image"        => "required"
+        ]);
+
+        if($validator){
+            
+                // if(isset($request["images"][$i])){
+    
+                    $filename = Str::random(32).".".$request["image"]->getClientOriginalExtension();
+                    $request["image"]->move('uploads/recipe', $filename);
+        
+        
+                    Image::create([
+                        "id"         => Uuid::uuid4()->toString(),
+                        "recipe_id"  =>$request->recipe_id,
+                        "image_url"  =>$filename
+                    ]);
+                // }
+
+            return response()->json(['message' => 'You Create The Recipe Image Successfully!'], 201);
+
+            }
+
+            return response()->json(["error"=>"There is an issue!"], 422);
 
     }
 }
