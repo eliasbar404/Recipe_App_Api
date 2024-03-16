@@ -51,7 +51,7 @@ class Recipe extends Model
         return $this->hasMany(Like::class);
     }
 
-    public function Reviews():HasMany
+    public function reviews():HasMany
     {
         return $this->hasMany(Review::class);
     }
