@@ -266,7 +266,7 @@ class RecipeController extends Controller
                 // if(isset($request["images"][$i])){
     
                     $filename = Str::random(32).".".$request["image"]->getClientOriginalExtension();
-                    $request["image"]->move('uploads', $filename);
+                    $request["image"]->move('uploads/', $filename);
         
         
                     Image::create([
