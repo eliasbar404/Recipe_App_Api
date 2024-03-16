@@ -121,7 +121,7 @@ class RecipeController extends Controller
         foreach($recipes as $recipe){
             $rating_list = [];
             // if($recipe->Reviews){
-            foreach(Recipe::where('id',$recipe->id)->Reviews() as $review){
+            foreach(Recipe::where('id',$recipe->id)->Reviews as $review){
                 array_push($rating_list,$review->rating);
             }
         // }
