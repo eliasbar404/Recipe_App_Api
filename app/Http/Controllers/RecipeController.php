@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Recipe;
 use App\Models\Step;
-use App\Models\Ingredient;
+use App\Models\Ingreient;
 use App\Models\Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -233,7 +233,7 @@ class RecipeController extends Controller
 
         if($validator){
             for($i=0;$i<count($request->ingredients);$i++) {
-                $ingredient = Ingredient::create([
+                $ingredient = Ingreient::create([
                     "id"           => Uuid::uuid4()->toString(),
                     "recipe_id"    => $request->recipe_id,
                     "name"         => $request->ingredients[$i]["name"],
@@ -247,7 +247,7 @@ class RecipeController extends Controller
             return response()->json(["error"=>"There is an issue!"], 422);
     }
     public function deleteIngredient($id) {
-        $ingredient = Ingredient::where('id',$id)->get();
+        $ingredient = Ingreient::where('id',$id)->get();
         $ingredient->delete();
         return response()->json(['message' => 'You Delete The Recipe Steps Successfully!'], 201);
 

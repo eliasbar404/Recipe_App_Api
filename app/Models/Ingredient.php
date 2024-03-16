@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Recipe;
 
-class Ingredient extends Model
+class Ingreient extends Model
 {
     use HasFactory;
     use SoftDeletes;
