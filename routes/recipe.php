@@ -35,6 +35,13 @@ Route::group([
 
 
     Route::post('/steps'               ,[RecipeController::class, 'createSteps']);
+    Route::post('/ingredients'         ,[RecipeController::class, 'createIngredients']);
+
+    Route::delete('/steps/{id}'        ,[RecipeController::class, 'deleteStep']);
+    Route::delete('/ingredients/{id}'  ,[RecipeController::class, 'deleteIngredient']);
+
+
+    
     
 
 });

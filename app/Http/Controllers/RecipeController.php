@@ -217,8 +217,39 @@ class RecipeController extends Controller
 
             return response()->json(["error"=>"There is an issue!"], 422);
     }
-    public function deleteStep($id) {}
 
-    public function createIngredient(Request $request) {}
-    public function deleteIngredient($id) {}
+    public function deleteStep($id) {
+        $step = Step::where('id',$id)->get();
+        $step->delete();
+        return response()->json(['message' => 'You Delete The Recipe Steps Successfully!'], 201);
+
+    }
+
+    public function createIngredients(Request $request) {
+        $validator = $request->validate([
+            "recipe_id"    => "required",
+            "ingredients"  => "required|array"
+        ]);
+
+        if($validator){
+            for($i=0;$i<count($request->ingredients);$i++) {
+                $ingredient = Ingredient::create([
+                    "id"           => Uuid::uuid4()->toString(),
+                    "recipe_id"    => $request->recipe_id,
+                    "name"         => $request->ingredients[$i]["name"],
+                    "quantity"     => $request->ingredients[$i]["quantity"],
+                ]);
+            }
+            return response()->json(['message' => 'You Create The Recipe Steps Successfully!'], 201);
+
+            }
+
+            return response()->json(["error"=>"There is an issue!"], 422);
+    }
+    public function deleteIngredient($id) {
+        $ingredient = Ingredient::where('id',$id)->get();
+        $ingredient->delete();
+        return response()->json(['message' => 'You Delete The Recipe Steps Successfully!'], 201);
+
+    }
 }
