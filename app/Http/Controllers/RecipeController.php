@@ -265,15 +265,24 @@ class RecipeController extends Controller
             
                 // if(isset($request["images"][$i])){
     
-                    $filename = Str::random(32).".".$request["image"]->getClientOriginalExtension();
-                    $request["image"]->move('uploads/', $filename);
+                    if ($request->hasFile('image')) {
+                        $image = $request->file('image');
+                        $imageName = time() . '_' . $image->getClientOriginalName();
+                        $image->move(public_path('uploads'), $imageName);
+
+                        Image::create([
+                            "id"         => Uuid::uuid4()->toString(),
+                            "recipe_id"  =>$request->recipe_id,
+                            "image_url"  =>$imageName
+                        ]);
+            
+                        return response()->json(['message' => 'Image uploaded successfully', 'image' => $imageName], 200);
+                    } else {
+                        return response()->json(['message' => 'No image uploaded'], 400);
+                    }
         
         
-                    Image::create([
-                        "id"         => Uuid::uuid4()->toString(),
-                        "recipe_id"  =>$request->recipe_id,
-                        "image_url"  =>$filename
-                    ]);
+
                 // }
 
             return response()->json(['message' => 'You Create The Recipe Image Successfully!'], 201);
