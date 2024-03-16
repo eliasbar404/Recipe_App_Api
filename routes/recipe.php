@@ -34,7 +34,7 @@ Route::group([
     Route::put('/recipe/{id}'           ,[RecipeController::class, 'updateRecipe']);
 
 
-    Route::post('/steps'               ,[RecipeController::class, 'createStep']);
+    Route::post('/steps'               ,[RecipeController::class, 'createSteps']);
     
 
 });
