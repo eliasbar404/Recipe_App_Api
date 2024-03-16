@@ -120,9 +120,11 @@ class RecipeController extends Controller
 
         foreach($recipes as $recipe){
             $rating_list = [];
+            if($recipe->Reviews){
             foreach(Recipe::where('id',$recipe->id)->Reviews as $review){
                 array_push($rating_list,$review->rating);
             }
+        }
 
             $rating =count($rating_list) == 0? 0:array_sum($rating_list)/count($rating_list);
             array_push($recipe_final,[
@@ -130,7 +132,7 @@ class RecipeController extends Controller
                 "images" =>$recipe->Images,
                 "rating" =>$rating,
                 "likes"  =>count($recipe->Likes),
-                "reviews" => $recipe->Reviews
+                // "reviews" => $recipe->Reviews
             ]);
         }
 
