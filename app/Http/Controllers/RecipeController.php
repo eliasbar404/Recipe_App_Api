@@ -240,7 +240,7 @@ class RecipeController extends Controller
                     "quantity"     => $request->ingredients[$i]["quantity"],
                 ]);
             }
-            return response()->json(['message' => 'You Create The Recipe Steps Successfully!'], 201);
+            return response()->json(['message' => 'You Create The Recipe ingred Successfully!'], 201);
 
             }
 
@@ -266,7 +266,7 @@ class RecipeController extends Controller
                 // if(isset($request["images"][$i])){
     
                     $filename = Str::random(32).".".$request["image"]->getClientOriginalExtension();
-                    $request["image"]->move('uploads/recipe', $filename);
+                    $request["image"]->move('uploads', $filename);
         
         
                     Image::create([
