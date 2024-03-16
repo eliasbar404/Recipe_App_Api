@@ -46,7 +46,7 @@ class Recipe extends Model
         return $this->hasMany(Ingredient::class);
     }
 
-    public function Likes():HasMany
+    public function likes():HasMany
     {
         return $this->hasMany(Like::class);
     }
@@ -56,7 +56,7 @@ class Recipe extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function Images():HasMany
+    public function images():HasMany
     {
         return $this->hasMany(Image::class);
     }
