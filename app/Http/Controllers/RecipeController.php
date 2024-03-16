@@ -237,7 +237,7 @@ class RecipeController extends Controller
                     "id"           => Uuid::uuid4()->toString(),
                     "recipe_id"    => $request->recipe_id,
                     "name"         => $request->ingredients[$i]["name"],
-                    // "quantity"     => $request->ingredients[$i]["quantity"],
+                    "quantity"     => $request->ingredients[$i]["quantity"],
                 ]);
             }
             return response()->json(['message' => 'You Create The Recipe Steps Successfully!'], 201);

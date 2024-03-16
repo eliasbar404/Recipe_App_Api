@@ -20,7 +20,7 @@ class Ingreient extends Model
         'id',
         'recipe_id',
         'name',
-        // 'quantity',
+        'quantity',
         'image_url',
     ];
 
