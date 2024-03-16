@@ -32,6 +32,9 @@ Route::group([
     Route::post('/recipe'               ,[RecipeController::class, 'createRecipe']);
     Route::delete('/recipe/{id}'        ,[RecipeController::class, 'deleteRecipe']);
     Route::put('/recipe/{id}'           ,[RecipeController::class, 'updateRecipe']);
+
+
+    Route::post('/steps'               ,[RecipeController::class, 'createStep']);
     
 
 });

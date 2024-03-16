@@ -191,4 +191,34 @@ class RecipeController extends Controller
 
         return $recipes;
     }
+
+
+
+
+    public function createSteps(Request $request) {
+        $validator = $request->validate([
+            "recipe_id" => "required",
+            "steps"     => "required|array"
+        ]);
+
+        if($validator){
+            for($i=0;$i<count($request->steps);$i++) {
+                $step = Step::create([
+                    "id"            => Uuid::uuid4()->toString(),
+                    "recipe_id"     => $request->recipe_id,
+                    "step_number"   => $i+1,
+                    "description"   => $request->steps[$i]["description"],
+                    "duration_min"  => $request->steps[$i]["duration_min"]
+                ]);
+            }
+            return response()->json(['message' => 'You Create The Recipe Steps Successfully!'], 201);
+
+            }
+
+            return response()->json(["error"=>"There is an issue!"], 422);
+    }
+    public function deleteStep($id) {}
+
+    public function createIngredient(Request $request) {}
+    public function deleteIngredient($id) {}
 }
