@@ -172,8 +172,8 @@ class RecipeController extends Controller
             "reviews"      => $review,
             "rating"       => $rating,
             // "likes"        => count($Recipe->likes),
-            "steps"        => $Recipe->steps,
-            "ingredients"  => $Recipe->ingreients,
+            "steps"        => Step::where('recipe_id',$Recipe->id)->get(),
+            // "ingredients"  => $Recipe->ingreients,
             // "images"       => $Recipe->images
         ];
 
