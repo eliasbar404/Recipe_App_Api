@@ -165,17 +165,19 @@ class RecipeController extends Controller
 
             $rating = floatval(array_sum($rating_list)/count($rating_list));
         }
-        // return $Recipe;
 
-        return [
-            "recipe"       => $recipe,
-            "reviews"      => $reviews,
-            "rating"       => $rating,
-            // "likes"        => count($Recipe->likes),
-            "steps"        => Step::where('recipe_id',$recipe->id)->get(),
-            // "ingredients"  => $Recipe->ingreients,
-            // "images"       => $Recipe->images
-        ];
+        dd($recipe->toSql());
+        // return $recipe;
+
+        // return [
+        //     "recipe"       => $recipe,
+        //     "reviews"      => $reviews,
+        //     "rating"       => $rating,
+        //     // "likes"        => count($Recipe->likes),
+        //     "steps"        => Step::where('recipe_id',$recipe->id)->get(),
+        //     // "ingredients"  => $Recipe->ingreients,
+        //     // "images"       => $Recipe->images
+        // ];
 
     }
 
