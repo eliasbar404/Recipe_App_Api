@@ -37,12 +37,12 @@ class Recipe extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function Steps(): HasMany
+    public function steps(): HasMany
     {
         return $this->hasMany(Step::class);
     }
 
-    public function Ingreients(): HasMany
+    public function ingreients(): HasMany
     {
         return $this->hasMany(Ingreient::class);
     }
