@@ -169,7 +169,7 @@ class RecipeController extends Controller
 
         return [
             "recipe"       => $recipe,
-            "reviews"      => $review,
+            "reviews"      => $reviews,
             "rating"       => $rating,
             // "likes"        => count($Recipe->likes),
             "steps"        => Step::where('recipe_id',$recipe->id)->get(),
