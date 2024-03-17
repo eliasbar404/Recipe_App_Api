@@ -150,7 +150,7 @@ class RecipeController extends Controller
 
     public function getOneRecipeById($id){
 
-        $recipe = Recipe::where('id',$id)->get();
+        $recipe = Recipe::where('id',$id)->first();
         $reviews = [];
         $rating_list = [];
         foreach($recipe->reviews as $review){
