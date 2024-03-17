@@ -131,6 +131,7 @@ class RecipeController extends Controller
                 "recipe" =>$recipe,
                 // "images" =>$recipe->images,
                 "rating" =>$rating,
+                "likes"  =>count($recipe->likes),
                 // "likes"  =>$recipe->likes,
                 // "reviews" => $recipe->Reviews
             ]);
@@ -164,16 +165,17 @@ class RecipeController extends Controller
 
             $rating = floatval(array_sum($rating_list)/count($rating_list));
         }
+        return $Recipe;
 
-        return [
-            "recipe"       => $Recipe,
-            "reviews"      => $review,
-            "rating"       => $rating,
-            "likes"        => count($Recipe->likes),
-            "steps"        => $Recipe->steps,
-            "ingredients"  => $Recipe->ingredients,
-            "images"       => $Recipe->images
-        ];
+        // return [
+        //     "recipe"       => $Recipe,
+        //     "reviews"      => $review,
+        //     "rating"       => $rating,
+        //     "likes"        => count($Recipe->likes),
+        //     "steps"        => $Recipe->steps,
+        //     "ingredients"  => $Recipe->ingredients,
+        //     // "images"       => $Recipe->images
+        // ];
 
     }
 
