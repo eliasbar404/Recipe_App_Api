@@ -12,6 +12,7 @@ use App\Models\Step;
 use App\Models\Ingreient;
 use App\Models\Review;
 use App\Models\Image;
+use App\Models\Like;
 
 class Recipe extends Model
 {

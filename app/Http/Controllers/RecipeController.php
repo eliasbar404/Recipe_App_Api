@@ -131,7 +131,7 @@ class RecipeController extends Controller
                 "recipe" =>$recipe,
                 // "images" =>$recipe->images,
                 "rating" =>$rating,
-                "likes"  =>$recipe->likes,
+                "likes"  =>count($recipe->likes),
                 // "likes"  =>$recipe->likes,
                 // "reviews" => $recipe->Reviews
             ]);
