@@ -20,4 +20,10 @@ class Like extends Model
         'recipe_id',
         'user_id',
     ];
+
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }
