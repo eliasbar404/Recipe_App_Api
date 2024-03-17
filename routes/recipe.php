@@ -21,7 +21,7 @@ Route::group([
     'middleware' => 'api'
 ], function ($router) {
 
-    Route::get('/recipes'                ,[RecipeController::class, 'getAllRecipes']);
+    // Route::get('/recipes'                ,[RecipeController::class, 'getAllRecipes']);
     Route::get('/recipes/{categoryName}' ,[RecipeController::class, 'getRecipesByCategory']);
     Route::post('/recipes/ingredients'   ,[RecipeController::class, 'getRecipesByIngredients']);
     Route::get('/recipes/{id}'           ,[RecipeController::class, 'getOneRecipeById']);

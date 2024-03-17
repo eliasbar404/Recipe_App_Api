@@ -150,16 +150,16 @@ class RecipeController extends Controller
 
     public function getOneRecipeById($id){
 
-        $Recipe = Recipe::where('id',$id)->get();
+        $recipe = Recipe::where('id',$id)->get();
         $reviews = [];
         $rating_list = [];
-        foreach($Recipe->reviews as $review){
+        foreach($recipe->reviews as $review){
             array_push($reviews,["review"=>$review,"user"=>$review->user]);
 
         };
         $rating = 0;
-        if(count($Recipe->reviews)>0){
-            foreach($Recipe->reviews as $review){
+        if(count($recipe->reviews)>0){
+            foreach($recipe->reviews as $review){
                 array_push($rating_list,$review->rating);
             };
 
@@ -168,11 +168,11 @@ class RecipeController extends Controller
         // return $Recipe;
 
         return [
-            "recipe"       => $Recipe,
+            "recipe"       => $recipe,
             "reviews"      => $review,
             "rating"       => $rating,
             // "likes"        => count($Recipe->likes),
-            "steps"        => Step::where('recipe_id',$Recipe->id)->get(),
+            "steps"        => Step::where('recipe_id',$recipe->id)->get(),
             // "ingredients"  => $Recipe->ingreients,
             // "images"       => $Recipe->images
         ];
